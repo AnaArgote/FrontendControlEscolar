@@ -15,6 +15,7 @@ btnEnviar.onclick = function(){
     //Evento que espera respuesta de API
     peticion.onload = function(){
         var objeto = JSON.parse(peticion.responseText);
+        console.log(peticion.responseText);
         //Validación de datos con respuesta de API
         if(objeto.rsp == 0){
             swal("Bienvenido!", objeto.nombreCompleto, "success");

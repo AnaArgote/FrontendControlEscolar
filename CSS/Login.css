@@ -1,0 +1,15 @@
+.caja-principal{
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-top: 5%;
+    text-align: center;
+    border-style: solid;
+    padding: 5%;
+    border-radius:10%;
+    border-color: rgba(0, 0, 0, 0.048);
+    width: 40%;
+}
+img{
+    width: 25%;
+    margin-bottom: 20px;
+}

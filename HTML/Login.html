@@ -5,18 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../CSS/Login.css">
     <title>Login</title>
 </head>
 
 <body>
     <div>
+    <div class="caja-principal">
+        <div>
+            <img src="../IMG/Logo.png" alt="Logo">
+            <h1>Login</h1>
+            <br>
+        </div>
+        <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="Usuario" class="form-control" />
+    <label class="form-label" for="Usuario">Usuario </label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" id="Contraseña" class="form-control" />
+    <label class="form-label" for="Contraseña">Contraseña</label>
+  </div>
+  <!--
         <label for="Usuario">Usuario:</label><br>
         <input type="text" id="Usuario"><br>
         <label for="Contraseña">Contraseña:</label><br>
         <input type="password" id="Contraseña"><br>
-        <button id="btnEntrar">Entrar</button>
-
+  -->      <button id="btnEntrar" class="btn btn-primary">Entrar</button>
+  
     </div>
+</div>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
