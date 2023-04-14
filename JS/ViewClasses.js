@@ -35,6 +35,7 @@ function countListStudents(){
     console.log(reque.responseText);
     lbl.innerHTML = 'Numero de alumnos con asistencia: '+students.length.toString();
     console.log('Numero de alumnos con asistencia: '+students.length.toString());
+    students = '';
   }
 }
 var intervalId = window.setInterval(function(){
