@@ -28,7 +28,7 @@ $("#text").
 
 function countListStudents(){
   var reque = new XMLHttpRequest();
-  reque.open('GET','./php/temp/prdTemp.json');
+  reque.open('GET','../php/temp/prdTemp.json');
   reque.send();
   reque.onload = function(){
     var students = JSON.parse(reque.responseText);
