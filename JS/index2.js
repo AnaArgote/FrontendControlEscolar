@@ -1,3 +1,13 @@
+window.onload = function(){
+  console.log(GetCookie('nameOfUser'));
+  if (GetCookie('userName') != null) {
+    txt = document.createTextNode('');
+    document.getElementById('numNotifications').appendChild(txt);
+  }else{
+    location.replace('http://localhost/FEC/HTML/Login.html');
+  }
+}
+/*
 let iToEncrypt = document.getElementById('iText');
 let btn = document.getElementById('btn');
 let lbl = document.getElementById('lblText');
@@ -19,7 +29,7 @@ var crypt = {
     }
   };
 
-  function sha256(message) {
+function sha256(message) {
     // encode as UTF-8
     const msgBuffer = new TextEncoder().encode(message);                    
 
@@ -36,4 +46,10 @@ var crypt = {
 btn.onclick = function(){
     console.log(CryptoJS.SHA256(iToEncrypt.value));
     lbl.textContent = CryptoJS.SHA256(iToEncrypt.value);
-}
+}*/
+
+document.getElementById('btnLogOut').addEventListener('click', function(){
+  DeleteCookie('TknBrJk');
+  DeleteCookie('userName');
+  location.href ='index.html';
+});

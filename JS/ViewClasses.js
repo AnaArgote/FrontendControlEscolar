@@ -1,6 +1,10 @@
+//Variables for container
+var roomClass;
+var divMain = document.getElementById('mainContainer');
+var template;
+/*
 var qrcode = new QRCode("qrcode");
 var lbl = document.getElementById('lblConteo');
-
 function makeCode () {    
   var elText = document.getElementById("text");
   
@@ -12,9 +16,6 @@ function makeCode () {
   
   qrcode.makeCode(elText.value);
 }
-
-makeCode();
-
 $("#text").
   on("blur", function () {
     makeCode();
@@ -25,6 +26,11 @@ $("#text").
       makeCode();
     }
   });
+
+*/
+/*var intervalId = window.setInterval(function(){
+  countListStudents();
+}, 2000);*/
 
 function countListStudents(){
   var reque = new XMLHttpRequest();
@@ -38,6 +44,27 @@ function countListStudents(){
     students = '';
   }
 }
-var intervalId = window.setInterval(function(){
-  countListStudents();
-}, 2000);
+
+/****************Template Open Class****************/
+function loadTemplateOpenClass(){
+  template = document.getElementById('tmlOpenClass');
+  const clone = template.content.cloneNode(true);
+  divMain.append(clone);
+}
+function loadClassRooms() {
+  document.coo
+}
+/****************Template Open Class****************/
+//Generic
+function mainMethod(){
+  roomClass = GetCookie('nameRoomClass');
+  if(roomClass != null){
+    
+  }else{
+    loadTemplateOpenClass();
+    console.log('No existe Cookie');
+  }
+}
+window.onload=function() {
+  mainMethod();
+}
