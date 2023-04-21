@@ -6,7 +6,7 @@ window.onload = function(){
     txt = document.createTextNode('7');
     numNotifications.appendChild(txt);
   }else{
-    location.replace('http://localhost/FEC/HTML/Login.html');
+    location.replace('Login.html');
   }
 }
 document.getElementById('btnLogOut').addEventListener('click', function(){
