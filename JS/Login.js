@@ -1,4 +1,4 @@
-/*//Creación de variables
+//Creación de variables
 var txtUsuario = document.getElementById('Usuario');
 var txtContraseña = document.getElementById('Contraseña');
 var btnEnviar = document.getElementById('btnEntrar');
@@ -44,5 +44,3 @@ btnEnviar.onclick = function(){
         }
     }
 }
-
-*/
