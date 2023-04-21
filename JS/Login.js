@@ -2,10 +2,22 @@
 var txtUsuario = document.getElementById('Usuario');
 var txtContraseña = document.getElementById('Contraseña');
 var btnEnviar = document.getElementById('btnEntrar');
+var txtMensajito = document.getElementById('mensajecuadrito');
+
+txtMensajito.style.display = 'none';
 
 console.log('Cookie '+GetCookie('prueba'));
 //Evento para botón enviar
 btnEnviar.onclick = function(){
+    if(txtUsuario.value.length > 0 && txtContraseña.value.length >0){
+        codigoFuncion();
+    }
+    else{
+        txtMensajito.style.display = 'block';
+    }
+}
+
+function codigoFuncion(){
     var peticion = new XMLHttpRequest(); //Hacer petición a backend
     peticion.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/Login/');
     var parametros = new FormData(); //Poner parametros
