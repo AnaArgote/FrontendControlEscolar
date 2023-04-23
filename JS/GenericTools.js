@@ -15,7 +15,6 @@ function GetCookie(name) {
     }
     // because unescape has been deprecated, replaced with decodeURI
     //return unescape(dc.substring(begin + prefix.length, end));
-    console.log('Holis');
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
 function SetCookie(nombre, value, numDiasExp){
