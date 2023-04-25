@@ -19,7 +19,7 @@ btnEnviar.onclick = function(){
 
 function codigoFuncion(){
     var peticion = new XMLHttpRequest(); //Hacer petición a backend
-    peticion.open('POST', 'https://localhost:7297/api/Login/');
+    peticion.open('POST', 'http://192.168.0.173:8024/api/Login/');
     var parametros = new FormData(); //Poner parametros
     parametros.append('Username', txtUsuario.value);
     parametros.append('Password', CryptoJS.SHA256(txtContraseña.value));//Mandar contraseña cifrada a backend
