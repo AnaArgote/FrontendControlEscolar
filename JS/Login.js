@@ -35,7 +35,8 @@ function codigoFuncion(){
             SetCookie('TknBrJk', objeto.token,15);
             SetCookie('userName', objeto.username, 15);
             SetCookie('nameOfUser', objeto.nombreCompleto, 15);
-            SetCookie('sections',objeto.secciones);    
+            SetCookie('sections',objeto.secciones); 
+            SetCookie('typeOfUser',objeto.userType);
             window.localStorage.setItem('img',objeto.imagen);
             console.log(window.localStorage.getItem('img'));
             swal.fire({

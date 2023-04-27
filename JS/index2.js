@@ -10,6 +10,8 @@ window.onload = function () {
     txt = document.createTextNode('1');
     numNotifications.appendChild(txt);
     imgUser.src = 'data:image/png;base64,' + window.localStorage.getItem('img');
+    console.log(GetCookie('typeOfUser'));
+    document.title = lanzarTituloPagina(GetCookie('typeOfUser'));
     console.log(window.localStorage.getItem('img'));
   } else {
     location.replace('Login.html');
@@ -36,4 +38,27 @@ function crearMenu(jsonSections, listSection) {
     li.appendChild(a);
     listSection.appendChild(li);
   });
+}
+function lanzarTituloPagina(typeUser){
+  let dev = '';
+  switch (parseInt(typeUser)) {
+    case 1000:{
+      dev = 'Consola de administrador';
+      break;
+    }
+    case 1150:{
+      dev = 'Panel alumnos';
+      break;
+    }
+    case 1050:{
+      dev = 'Panel de profesores';
+      break;
+    }
+    default:{
+      dev = 'panel';
+      break;
+    }
+  }
+  console.log(dev);
+  return dev;
 }
