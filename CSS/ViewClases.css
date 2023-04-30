@@ -2,8 +2,14 @@
     margin-left: 25%;
     margin-right: 25%;
     align-items: center;
+    margin-top: 6%;
 }
 .boxontainerClasses{
     width: 33%;
     text-align: center;
+}
+.containerAuthAdmin{
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 5%;
 }

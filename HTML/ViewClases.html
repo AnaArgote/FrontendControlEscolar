@@ -5,22 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/ViewClases.css">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../CSS/ViewClases.css">
     <title>Visualize QR Code Class</title>
 </head>
 
 <body>
     <div id="mainContainer">
-
     </div>
     <!--Template para QR de clase en turno-->
-    <template id="tmlCodigoQr">
+    <div id="authAdmin" style="display: none;">
+
+        <form class="containerAuthAdmin" id="formAuth">
+            <center><label for="formAuth">
+                    <h2>Se requiere autenticacion administrativa</h2>
+                </label></center>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="email" id="txtUserAdmin" class="form-control" />
+                <label class="form-label" for="txtUserAdmin">Usuario administrador</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" id="txtPasswordAdmin" class="form-control" />
+                <label class="form-label" for="txtPasswordAdmin">Contraseña</label>
+            </div>
+            <!-- Submit button -->
+            <button type="button" class="btn btn-primary btn-block mb-4" onclick="loginAdmin()">Login</button>
+        </form>
+
+    </div>
+
+    <!--Template para QR de clase en turno-->
+    <div id="tmlCodigoQr" style="display: none;">
         <div>
             <input id="text" type="text" value="941-33" style="width:80%" /><br />
             <br>
@@ -29,18 +52,16 @@
             <br>
             <label id="lblConteo">Numero de alumnos</label>
         </div>
-    </template>
+    </div>
     <!--Template para QR de clase en turno-->
     <!--Template para apertura de salón clase-->
-    <template id="tmlOpenClass">
+    <div id="tmlOpenClass" style="display: none;">
         <div class="containerSaveRoom">
-            <label for="">Selecciona el salon de clase a aperturar</label><br>
-            <select name="nombreAula" id="nombreAula" class="boxontainerClasses">
-                <option value="A">A</option>
-                <option value="A">B</option>
-                <option value="A">C</option>
+            <center><label for=""><h2>Selecciona el salon de clase a aperturar</h2></label><br></center>
+            <select name="nombreAula" id="nombreAula" class="form-select">
             </select><br />
-    </template>
+            <center><Button type="button" class="btn btn-primary" onclick="saveRoomClassName()">Seleccionar Aula</Button></center>
+    </div>
     <!--Template para apertura de salón clase-->
     <!--Template para reporte de asistencia de salón clase-->
     <template id="tmlReportClass">
@@ -54,6 +75,9 @@
     </template>
     <!--Template para reporte de asistencia de salón clase-->
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
         integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -61,9 +85,11 @@
         integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- MDB -->
+    <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     <script src="../JS/GenericTools.js"></script>
     <script src="../JS/ViewClasses.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
