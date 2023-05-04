@@ -5,35 +5,10 @@ var divMain = document.getElementById('mainContainer');
 var templateAuthAdmin = document.getElementById('authAdmin');
 var templateLoadClases = document.getElementById('tmlOpenClass');
 var templateQrSpace = document.getElementById('tmlCodigoQr');
-/*
+
 var qrcode = new QRCode("qrcode");
 var lbl = document.getElementById('lblConteo');
-function makeCode () {    
-  var elText = document.getElementById("text");
-  
-  if (!elText.value) {
-    alert("Input a text");
-    elText.focus();
-    return;
-  }
-  
-  qrcode.makeCode(elText.value);
-}
-$("#text").
-  on("blur", function () {
-    makeCode();
-  }).
-  on("keydown", function (e) {
-    console.log(e.keyCode);
-    if (e.keyCode == 13) {
-      makeCode();
-    }
-  });
 
-*/
-/*var intervalId = window.setInterval(function(){
-  countListStudents();
-}, 2000);*/
 
 function countListStudents(){
   var reque = new XMLHttpRequest();
@@ -58,7 +33,7 @@ function loginAdmin(){
   var prms = new FormData();
   prms.append('username', txtUsuario.value);
   prms.append('password', CryptoJS.SHA256(txtPassword.value));
-  request.open('POST', 'https://localhost:7297/api/Login');
+  request.open('POST', 'http://localhost:8024/api/Login');
   request.send(prms);
   request.onload = function(){
     var response = JSON.parse(request.responseText);
@@ -112,7 +87,7 @@ function loadExistingRoomClases(){
 }
 function saveRoomClassName() {
   if (selectionRoomClass.selectedIndex > 0) {
-    console.log(selectionRoomClass[selectionRoomClass.selectedIndex].text);  
+    saveFilesRoomClass();
   }else{
     Swal.fire({
       icon: 'error',
@@ -122,17 +97,61 @@ function saveRoomClassName() {
   }
 }
 function saveFilesRoomClass(){
-  
+  var reqReadRoomClass = new XMLHttpRequest();
+  reqReadRoomClass.open('GET', 'https://localhost:7297/api/ConsultarClasesAula?Aula='+selectionRoomClass[selectionRoomClass.selectedIndex].text);
+  reqReadRoomClass.setRequestHeader('Authorization', 'Bearer '+GetCookie('tknAuth'));
+  reqReadRoomClass.send();
+  reqReadRoomClass.onload = function(){
+    SetCookie('fileRefClassJson','../php/temp/Aula_'+selectionRoomClass[selectionRoomClass.selectedIndex].text+'.json');
+    //cerrar vista actual y cargar template de qrqwertyuiop´+}sdfg
+    templateLoadClases.style.display = 'none';
+    openQrView();
+  }
 }
 /****************Template Open Class****************/
+/*******************************Template QR Code Class*******************************/
+
+function makeCode () {    
+  var elText = document.getElementById("text");
+  
+  if (!elText.value) {
+    alert("Input a text");
+    elText.focus();
+    return;
+  }
+  
+  qrcode.makeCode(elText.value);
+}
+makeCode();
+$("#text").
+  on("blur", function () {
+    makeCode();
+  }).
+  on("keydown", function (e) {
+    console.log(e.keyCode);
+    if (e.keyCode == 13) {
+      makeCode();
+    }
+  });
+
+
+var intervalId = window.setInterval(function(){
+  countListStudents();
+}, 2000);
+function openQrView(){
+  console.log('Open qr view');
+  templateQrSpace.style.display = 'block';
+}
+/*******************************Template QR Code Class*******************************/
 //Generic
 function mainMethod(){
   //DeleteCookie('ExistAuth');
   //DeleteCookie('tknAuth');
-  roomClass = GetCookie('nameRoomClass');
+  //DeleteCookie('fileRefClassJson');
+  infoClassesLoaded = GetCookie('fileRefClassJson');
   auth = GetCookie('ExistAuth');
-  if(roomClass != null){
-    
+  if(infoClassesLoaded != null){
+    openQrView();
   }else{
     if(auth != null){
       loadTemplateOpenClass();
@@ -143,5 +162,8 @@ function mainMethod(){
   }
 }
 window.onload=function() {
+  var weekday = new Date().getDay();
+  console.log('Hoy '+new Date().toDateString());
+  console.log('Dia de la semana '+weekday);
   mainMethod();
 }

@@ -45,17 +45,20 @@
     <!--Template para QR de clase en turno-->
     <div id="tmlCodigoQr" style="display: none;">
         <div>
+            <center>
             <input id="text" type="text" value="941-33" style="width:80%" /><br />
             <br>
             <br>
-            <div id="qrcode"></div>
+            <div id="qrcode" class="qrCodeStyle"></div>
             <br>
+        
             <label id="lblConteo">Numero de alumnos</label>
+        </center>
         </div>
     </div>
     <!--Template para QR de clase en turno-->
     <!--Template para apertura de salón clase-->
-    <div id="tmlOpenClass" style="display: none;">
+    <div id="tmlOpenClass" style="display: none;"  data-mdb-toggle="animation" data-mdb-animation-reset="true" >
         <div class="containerSaveRoom">
             <center><label for=""><h2>Selecciona el salon de clase a aperturar</h2></label><br></center>
             <select name="nombreAula" id="nombreAula" class="form-select">
