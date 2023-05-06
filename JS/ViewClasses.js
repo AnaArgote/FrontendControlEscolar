@@ -5,6 +5,7 @@ var divMain = document.getElementById('mainContainer');
 var templateAuthAdmin = document.getElementById('authAdmin');
 var templateLoadClases = document.getElementById('tmlOpenClass');
 var templateQrSpace = document.getElementById('tmlCodigoQr');
+var jsonTodayClases;
 
 var qrcode = new QRCode("qrcode");
 var lbl = document.getElementById('lblConteo');
@@ -33,7 +34,7 @@ function loginAdmin(){
   var prms = new FormData();
   prms.append('username', txtUsuario.value);
   prms.append('password', CryptoJS.SHA256(txtPassword.value));
-  request.open('POST', 'http://localhost:8024/api/Login');
+  request.open('POST', MASTER_SERVER+'/api/Login');
   request.send(prms);
   request.onload = function(){
     var response = JSON.parse(request.responseText);
@@ -68,7 +69,7 @@ function loadTemplateOpenClass(){
 function loadExistingRoomClases(){
   selectionRoomClass = document.getElementById('nombreAula');
   var requestRooms = new XMLHttpRequest();
-  requestRooms.open('GET', 'http://localhost:8024/api/VisorAulas');
+  requestRooms.open('GET', MASTER_SERVER+'/api/VisorAulas');
   requestRooms.setRequestHeader('Authorization', 'Bearer '+GetCookie('tknAuth'));
   requestRooms.send();
   
@@ -83,6 +84,7 @@ function loadExistingRoomClases(){
         optionObj.text =  room.nombre;
         selectionRoomClass.appendChild(optionObj);
     });
+
 }  
 }
 function saveRoomClassName() {
@@ -98,8 +100,9 @@ function saveRoomClassName() {
 }
 function saveFilesRoomClass(){
   var reqReadRoomClass = new XMLHttpRequest();
-  reqReadRoomClass.open('GET', 'https://localhost:7297/api/ConsultarClasesAula?Aula='+selectionRoomClass[selectionRoomClass.selectedIndex].text);
+  reqReadRoomClass.open('GET', MASTER_SERVER+'/api/ConsultarClasesAula?Aula='+selectionRoomClass[selectionRoomClass.selectedIndex].text);
   reqReadRoomClass.setRequestHeader('Authorization', 'Bearer '+GetCookie('tknAuth'));
+  console.log(GetCookie('tknAuth'));
   reqReadRoomClass.send();
   reqReadRoomClass.onload = function(){
     SetCookie('fileRefClassJson','../php/temp/Aula_'+selectionRoomClass[selectionRoomClass.selectedIndex].text+'.json');
@@ -141,13 +144,27 @@ var intervalId = window.setInterval(function(){
 function openQrView(){
   console.log('Open qr view');
   templateQrSpace.style.display = 'block';
+  loadClasesFromJsonFile();
+}
+function loadClasesFromJsonFile(){
+  var requestJsonFile = new XMLHttpRequest();
+  infoClassesLoaded = GetCookie('fileRefClassJson');
+  requestJsonFile.open('GET', infoClassesLoaded);
+  requestJsonFile.send();
+  requestJsonFile.onload = function(){
+    jsonTodayClases = JSON.parse(requestJsonFile.responseText);
+    console.log(requestJsonFile.responseText);
+    let otroGato = jsonTodayClases.filter(obj=>obj.dia=='Martes');
+    console.log('json filtrado');
+    console.log(otroGato);
+  }
 }
 /*******************************Template QR Code Class*******************************/
 //Generic
 function mainMethod(){
-  //DeleteCookie('ExistAuth');
-  //DeleteCookie('tknAuth');
-  //DeleteCookie('fileRefClassJson');
+  /*DeleteCookie('ExistAuth');
+  DeleteCookie('tknAuth');
+  DeleteCookie('fileRefClassJson');*/
   infoClassesLoaded = GetCookie('fileRefClassJson');
   auth = GetCookie('ExistAuth');
   if(infoClassesLoaded != null){
@@ -163,7 +180,6 @@ function mainMethod(){
 }
 window.onload=function() {
   var weekday = new Date().getDay();
-  console.log('Hoy '+new Date().toDateString());
-  console.log('Dia de la semana '+weekday);
+  console.log('Dia de la semana '+getActualDay())
   mainMethod();
 }
