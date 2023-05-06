@@ -36,3 +36,9 @@ function SaveFile(fileName,contentFile){
     txtFile.close();*/
     console.log(contentFile);
 }
+function getActualDay(){
+    let date = new Date();
+    let dias = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"]
+    let dia = dias[date.getDay()];
+    return dia;    
+}
