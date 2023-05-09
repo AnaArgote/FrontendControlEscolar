@@ -6,6 +6,7 @@ var templateAuthAdmin = document.getElementById('authAdmin');
 var templateLoadClases = document.getElementById('tmlOpenClass');
 var templateQrSpace = document.getElementById('tmlCodigoQr');
 var jsonTodayClases;
+var codeClass;
 
 var qrcode = new QRCode("qrcode");
 var lbl = document.getElementById('lblConteo');
@@ -106,6 +107,7 @@ function saveFilesRoomClass(){
   reqReadRoomClass.send();
   reqReadRoomClass.onload = function(){
     SetCookie('fileRefClassJson','../php/temp/Aula_'+selectionRoomClass[selectionRoomClass.selectedIndex].text+'.json');
+    SetCookie('fileStudentsAtendence','../php/temp/Asistencia_'+selectionRoomClass[selectionRoomClass.selectedIndex].text+'.json');
     //cerrar vista actual y cargar template de qrqwertyuiop´+}sdfg
     templateLoadClases.style.display = 'none';
     openQrView();
@@ -115,18 +117,15 @@ function saveFilesRoomClass(){
 /*******************************Template QR Code Class*******************************/
 
 function makeCode () {    
-  var elText = document.getElementById("text");
   
-  if (!elText.value) {
-    alert("Input a text");
-    elText.focus();
+  if (codeClass.length < 0) {
     return;
   }
   
-  qrcode.makeCode(elText.value);
+  qrcode.makeCode(codeClass);
 }
-makeCode();
-$("#text").
+
+/*$("#text").
   on("blur", function () {
     makeCode();
   }).
@@ -135,7 +134,7 @@ $("#text").
     if (e.keyCode == 13) {
       makeCode();
     }
-  });
+  });*/
 
 
 var intervalId = window.setInterval(function(){
@@ -153,10 +152,11 @@ function loadClasesFromJsonFile(){
   requestJsonFile.send();
   requestJsonFile.onload = function(){
     jsonTodayClases = JSON.parse(requestJsonFile.responseText);
-    console.log(requestJsonFile.responseText);
-    let otroGato = jsonTodayClases.filter(obj=>obj.dia=='Martes');
-    console.log('json filtrado');
-    console.log(otroGato);
+    jsonTodayClases=  jsonTodayClases.filter(x=>x.Dia === 'Martes');
+    firstClass = jsonTodayClases[0];
+    console.log(firstClass);
+    codeClass = firstClass.IdClase;
+    makeCode();
   }
 }
 /*******************************Template QR Code Class*******************************/
