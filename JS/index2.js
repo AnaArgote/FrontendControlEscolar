@@ -1,5 +1,6 @@
 
-window.onload = function () {
+window.onload = loadInfo();
+function loadInfo(){
   console.log(GetCookie('nameOfUser'));
   if (GetCookie('userName') != null) {
     var listSections = document.getElementById('listMenu');
@@ -10,6 +11,7 @@ window.onload = function () {
     txt = document.createTextNode('1');
     numNotifications.appendChild(txt);
     imgUser.src = 'data:image/png;base64,' + window.localStorage.getItem('img');
+    console.log('img '+window.localStorage.getItem('img'))
     console.log(GetCookie('typeOfUser'));
     document.title = lanzarTituloPagina(GetCookie('typeOfUser'));
     console.log(window.localStorage.getItem('img'));

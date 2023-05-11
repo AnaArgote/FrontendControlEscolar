@@ -110,22 +110,100 @@
                     aria-controls="ex2-tabs-3" aria-selected="false">Grados</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab"
-                    aria-controls="ex2-tabs-3" aria-selected="false">Materias</a>
+                <a class="nav-link" id="ex2-tab-4" data-mdb-toggle="tab" href="#ex2-tabs-4" role="tab"
+                    aria-controls="ex2-tabs-4" aria-selected="false">Materias</a>
             </li>
         </ul>
         <!-- Tabs navs -->
 
         <!-- Tabs content -->
         <div class="tab-content" id="ex2-content">
+            <!--Aulas-->
             <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
-                Tab 1 content
+                <div class="row">
+                    <div class="col-md-4">
+                        <i><h2>Insertar una nueva aula</h2></i>
+                        <div class="form-outline">
+                            <input type="text" id="txtAulaNew" class="form-control" />
+                            <label class="form-label" for="txtAulaNew">Nombre de aula a insertar</label>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-primary" style="width: 100%;" id="btnInsertarAula">Registrar Aula</button>
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table align-middle mb-0 bg-white" id="tableClases">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Nombre del Aula</th>
+                                    <th>Fecha de inserción</th>
+                                    <th>Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+            <!--Aulas-->
+            <!--Dias de clase-->
             <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
-                Tab 2 content
+                <div class="row">
+                    <div class="col-md-4">
+                        <i><h2>Insertar una nuevo dia de clase</h2></i>
+                        <div class="form-outline">
+                            <input type="text" id="txtDiaClaseNew" class="form-control" />
+                            <label class="form-label" for="txtDiaClaseNew">Nombre del dia a insertar</label>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-primary" style="width: 100%;" id="btnInsertarDia">Registrar Dia</button>
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table align-middle mb-0 bg-white" id="tableDias">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Nombre del dia</th>
+                                    <th>Fecha de inserción</th>
+                                    <th>Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+            <!--Dias de clase-->
+            <!--Grados-->
             <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
-                Tab 3 content
+                <div class="row">
+                    <div class="col-md-4">
+                        <i><h2>Insertar una nuevo grado</h2></i>
+                        <div class="form-outline">
+                            <input type="text" id="txtgradoNew" class="form-control" />
+                            <label class="form-label" for="txtgradoNew">Nombre del grado a insertar</label>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-primary" style="width: 100%;" id="btnInsertarDia">Registrar Grado</button>
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table align-middle mb-0 bg-white" id="tableGrados">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Nombre del dia</th>
+                                    <th>Fecha de inserción</th>
+                                    <th>Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--Grados-->
+            <div class="tab-pane fade" id="ex2-tabs-4" role="tabpanel" aria-labelledby="ex2-tab-3">
+                Tab 4 content
             </div>
         </div>
         <!-- Tabs content -->
@@ -133,8 +211,11 @@
 
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/MasterLinks.js"></script>
     <script src="../JS/GenericTools.js"></script>
     <script src="../JS/index2.js"></script>
+    <script src="../JS/GestionPrincipal.js"></script>
 </body>
 
 </html>
