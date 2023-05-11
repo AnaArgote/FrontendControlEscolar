@@ -1,4 +1,6 @@
 var tabla = document.getElementById('tblMaterias');
+var tablaMaterias = document.getElementById('tblMateriasDisponibles');
+var indiceColor = 0;
 function codigoFuncion(){
     var peticion = new XMLHttpRequest(); //Hacer petición a backend
     peticion.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/VerMisMaterias');
@@ -29,4 +31,44 @@ function codigoFuncion(){
         });
     }
 }
+
+
+function codigoFuncionTabla2(){
+    var peticion = new XMLHttpRequest(); //Hacer petición a backend
+    peticion.open('GET', 'http://mrsergiotorres17-001-site1.itempurl.com/api/ClasesTotalVista');
+    peticion.setRequestHeader('Authorization', 'Bearer '+ GetCookie('TknBrJk'));
+    peticion.send(); //Enviar petición
+    peticion.onload = function(){
+        var objJson = JSON.parse(peticion.responseText);
+        var fila;
+        var materia;
+        var aula;
+        var dia;
+        var hora;
+        objJson.forEach(element => {
+            fila = tablaMaterias.insertRow();
+            materia = fila.insertCell(0);
+            aula = fila.insertCell(1);
+            dia = fila.insertCell(2);
+            hora = fila.insertCell(3);
+            fila.className = obtenerColor();
+            materia.innerHTML = element.materia;
+            aula.innerHTML = element.aula;
+            dia.innerHTML = element.dia;
+            hora.innerHTML = element.horario;
+        });
+    }
+}
+
+function obtenerColor(){
+    let arregloColores = ['table-primary','table-secondary', 'table-success', 'table-danger', 'table-warning'];
+    if (indiceColor <= arregloColores.length){
+        indiceColor+=1;
+    }
+    else{
+        indiceColor = 0;
+    }
+    return arregloColores[indiceColor];
+}
 codigoFuncion();
+codigoFuncionTabla2();
