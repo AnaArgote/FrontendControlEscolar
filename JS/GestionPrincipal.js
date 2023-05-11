@@ -18,6 +18,7 @@ function loadExistClasses() {
     var reqAulas = new XMLHttpRequest();
     reqAulas.open('GET', MASTER_SERVER+'/api/VisorAulas');
     reqAulas.setRequestHeader('Authorization', 'Bearer '+GetCookie('TknBrJk'));
+    console.log('Token antes de peticion '+GetCookie('TknBrJk'));
     reqAulas.send();
     var fila;
     var celda;
@@ -80,5 +81,4 @@ function insertNewAula(){
 /**Main Module**/
 window.onload = function(){
     loadExistClasses();
-
 }
