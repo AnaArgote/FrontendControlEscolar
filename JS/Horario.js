@@ -1,6 +1,6 @@
 var tabla = document.getElementById('tblMaterias');
 var tablaMaterias = document.getElementById('tblMateriasDisponibles');
-var indiceColor = 0;
+var indiceColor = -1;
 function codigoFuncion(){
     var peticion = new XMLHttpRequest(); //Hacer petición a backend
     peticion.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/VerMisMaterias');
@@ -11,6 +11,7 @@ function codigoFuncion(){
     peticion.onload = function(){
         var objJson = JSON.parse(peticion.responseText);
         var fila;
+        var boton;
         var codigo;
         var dia;
         var hora;
@@ -18,11 +19,13 @@ function codigoFuncion(){
         var profesor;
         objJson.forEach(element => {
             fila = tabla.insertRow();
-            codigo = fila.insertCell(0);
-            dia = fila.insertCell(1);
-            hora = fila.insertCell(2);
-            materia = fila.insertCell(3);
-            profesor = fila.insertCell(4);
+            boton = fila.insertCell(0);
+            codigo = fila.insertCell(1);
+            dia = fila.insertCell(2);
+            hora = fila.insertCell(3);
+            materia = fila.insertCell(4);
+            profesor = fila.insertCell(5);
+            boton.innerHTML = '<button type="button" class="btn btn-danger">Baja</button>';
             codigo.innerHTML = '<div class="d-flex align-items-center"><div class="ms-3"><p class="fw-bold mb-1">'+ element.codigoClase+'</p></div></div>';
             dia.innerHTML = element.dia;
             hora.innerHTML = '<span class="badge badge-success rounded-pill d-inline">'+ element.horario+'</span>';
@@ -41,17 +44,20 @@ function codigoFuncionTabla2(){
     peticion.onload = function(){
         var objJson = JSON.parse(peticion.responseText);
         var fila;
+        var boton;
         var materia;
         var aula;
         var dia;
         var hora;
         objJson.forEach(element => {
             fila = tablaMaterias.insertRow();
-            materia = fila.insertCell(0);
-            aula = fila.insertCell(1);
-            dia = fila.insertCell(2);
-            hora = fila.insertCell(3);
+            boton =fila.insertCell(0)
+            materia = fila.insertCell(1);
+            aula = fila.insertCell(2);
+            dia = fila.insertCell(3);
+            hora = fila.insertCell(4);
             fila.className = obtenerColor();
+            boton.innerHTML= '<button type="button" class="btn btn-success">Alta</button>';
             materia.innerHTML = element.materia;
             aula.innerHTML = element.aula;
             dia.innerHTML = element.dia;
@@ -62,8 +68,8 @@ function codigoFuncionTabla2(){
 
 function obtenerColor(){
     let arregloColores = ['table-primary','table-secondary', 'table-success', 'table-danger', 'table-warning'];
-    if (indiceColor <= arregloColores.length){
-        indiceColor+=1;
+    if (indiceColor < 4){
+        indiceColor += 1;
     }
     else{
         indiceColor = 0;
