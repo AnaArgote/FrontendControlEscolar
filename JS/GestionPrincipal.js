@@ -40,7 +40,7 @@ function loadExistClasses() {
             celda.innerHTML = '<p class="fw-normal mb-1">'+fecha.toLocaleDateString('es-MX')+'</p>';
             //Celda Boton estatus
             celda = fila.insertCell(2);
-            celda.innerHTML = (element.active? '<button type="button" class="btn btn-danger">Desactivar</button>':'<button type="button" class="btn btn-success">Activar</button>');
+            celda.innerHTML = (element.active? '<button type="button" class="btn btn-danger" onclick="controlMateria(this);">Desactivar</button>':'<button type="button" class="btn btn-success">Activar</button>');
                                
         });
     }
@@ -74,6 +74,39 @@ function insertNewAula(){
               });
         }
     }
+}
+function controlMateria(prms){
+let currenElement = prms;
+let textoBoton = currenElement.textContent;
+console.log('Texto Boton: '+textoBoton)
+let nombreAula = currenElement.parentElement.parentElement.querySelector('div').querySelector('div').querySelector('p').textContent.replace('Aula ','').trim();
+console.log('Pegado'+nombreAula);
+Swal.fire({
+    title:'¿Seguro que quieres '+(textoBoton==='Desactivar'?"desactivar":"activar")+' el aula "'+nombreAula+'"?',
+    icon: 'question',
+    showDenyButton: true,
+    confirmButtonText: 'Sí',
+  }).then((result) => {
+    if (result.isConfirmed) {
+        desactivarAula();
+      
+    } else if (result.isDenied) {
+      Swal.fire('Movimiento cancelado', '', 'error')
+    }
+  })
+
+}
+function desactivarAula() {
+    var requestChange = new XMLHttpRequest();
+        var data = new FormData();
+        requestChange.open('POST',  MASTER_SERVER+'/api/DesactivarAula');
+        requestChange.setRequestHeader('Authorizzation','Bearer '+GetCookie('TknBrJk'));
+        data.append('NombreAula',nombreAula);
+        requestChange.send(data);
+        requestChange.onload = function(){
+            var resp = JSON.parse(requestChange.responseText);
+            Swal.fire((resp.rsp == 0)?'Proceso terminado':'Error', (resp.rsp == 0)?'Proceso completado correctamente':'El proceso ha fallado', (resp.rsp == 0)?'success':'error')
+        }
 }
 /*****************************************************************************/
 /********************************Gestion Aulas********************************/
