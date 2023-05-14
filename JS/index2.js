@@ -1,7 +1,9 @@
 
 window.onload = loadInfo();
 function loadInfo(){
-  if (GetCookie('userName') != null) {
+  console.log('Token '+GetCookie('TknBrJk'))
+  if (GetCookie('userName') != null && GetCookie('TknBrJk') !=null
+      && GetCookie('TknBrJk').length > 0) {
     var listSections = document.getElementById('listMenu');
     var numNotifications = document.getElementById('numNotifications');
     var imgUser = document.getElementById('imgUser');
