@@ -122,13 +122,16 @@
             <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
                 <div class="row">
                     <div class="col-md-4">
-                        <i><h2>Insertar una nueva aula</h2></i>
+                        <i>
+                            <h2>Insertar una nueva aula</h2>
+                        </i>
                         <div class="form-outline">
                             <input type="text" id="txtAulaNew" class="form-control" />
                             <label class="form-label" for="txtAulaNew">Nombre de aula a insertar</label>
                         </div>
                         <br>
-                        <button type="button" class="btn btn-primary" style="width: 100%;" id="btnInsertarAula">Registrar Aula</button>
+                        <button type="button" class="btn btn-primary" style="width: 100%;"
+                            id="btnInsertarAula">Registrar Aula</button>
                     </div>
                     <div class="col-md-8">
                         <table class="table align-middle mb-0 bg-white" id="tableAula">
@@ -150,13 +153,16 @@
             <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
                 <div class="row">
                     <div class="col-md-4">
-                        <i><h2>Insertar una nuevo dia de clase</h2></i>
+                        <i>
+                            <h2>Insertar una nuevo dia de clase</h2>
+                        </i>
                         <div class="form-outline">
                             <input type="text" id="txtDiaClaseNew" class="form-control" />
                             <label class="form-label" for="txtDiaClaseNew">Nombre del dia a insertar</label>
                         </div>
                         <br>
-                        <button type="button" class="btn btn-primary" style="width: 100%;" id="btnInsertarDia">Registrar Dia</button>
+                        <button type="button" class="btn btn-primary" style="width: 100%;" id="btnInsertarDia">Registrar
+                            Dia</button>
                     </div>
                     <div class="col-md-8">
                         <table class="table align-middle mb-0 bg-white" id="tableDias">
@@ -178,13 +184,16 @@
             <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
                 <div class="row">
                     <div class="col-md-4">
-                        <i><h2>Insertar una nuevo grado</h2></i>
+                        <i>
+                            <h2>Insertar una nuevo grado</h2>
+                        </i>
                         <div class="form-outline">
                             <input type="text" id="txtgradoNew" class="form-control" />
                             <label class="form-label" for="txtgradoNew">Nombre del grado a insertar</label>
                         </div>
                         <br>
-                        <button type="button" class="btn btn-primary" style="width: 100%;" id="btnInsertarGrado">Registrar Grado</button>
+                        <button type="button" class="btn btn-primary" style="width: 100%;"
+                            id="btnInsertarGrado">Registrar Grado</button>
                     </div>
                     <div class="col-md-8">
                         <table class="table align-middle mb-0 bg-white" id="tableGrados">
@@ -203,7 +212,40 @@
             </div>
             <!--Grados-->
             <div class="tab-pane fade" id="ex2-tabs-4" role="tabpanel" aria-labelledby="ex2-tab-3">
-                Tab 4 content
+                <div class="row">
+                    <div class="col-md-4">
+                        <i>
+                            <h2>Insertar una nueva materia</h2>
+                        </i>
+                        <div class="form-outline">
+                            <input type="text" id="txtMateriaNew" class="form-control" />
+                            <label class="form-label" for="txtMateriaNew">Nombre de la materia</label>
+                        </div>
+                        <br>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Selecciona el grado de la materia</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <br>
+                        <button type="button" class="btn btn-primary" style="width: 100%;"
+                            id="btnInsertarMateria">Registrar Materia</button>
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table align-middle mb-0 bg-white" id="tableMaterias">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Nombre de la materia</th>
+                                    <th>Fecha de inserción</th>
+                                    <th>Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Tabs content -->

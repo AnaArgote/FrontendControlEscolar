@@ -28,8 +28,8 @@ btnRegistrar.onclick = function () {
     
 }
 btnRegistrarDiaClase.onclick = function(){
-    if (txtNuevoGrado.value.length > 0) {
-        insertNewGrado();
+    if (txtNuevoDiaClase.value.length > 0) {
+        insertNewDiaClase();
     }else{
         Swal.fire({
             icon: 'error',
@@ -40,8 +40,8 @@ btnRegistrarDiaClase.onclick = function(){
     
 }
 btnRegistrarGrado.onclick = function(){
-    if (txtNuevoDiaClase.value.length > 0) {
-        insertNewDiaClase();
+    if (txtNuevoGrado.value.length > 0) {
+        insertNewGrado();
     }else{
         Swal.fire({
             icon: 'error',
@@ -66,7 +66,6 @@ function loadExistClasses() {
     var reqAulas = new XMLHttpRequest();
     reqAulas.open('GET', MASTER_SERVER + '/api/VisorAulas');
     reqAulas.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
-    console.log('Token antes de peticion ' + GetCookie('TknBrJk'));
     reqAulas.send();
     var fila;
     var celda;
@@ -76,7 +75,6 @@ function loadExistClasses() {
         json = JSON.parse(reqAulas.responseText);
         deleteTable();
         json.forEach(element => {
-            console.log('insertando filas')
             fecha = new Date(element.fechaInsercion);
             fila = tblAulas.insertRow();
             //Celda nombre aula
@@ -127,9 +125,7 @@ function insertNewAula() {
 function controlMateria(prms) {
     let currenElement = prms;
     let textoBoton = currenElement.textContent;
-    console.log('Texto Boton: ' + textoBoton)
     let nombreAula = currenElement.parentElement.parentElement.querySelector('div').querySelector('div').querySelector('p').textContent.replace('Aula ', '').trim();
-    console.log('Pegado' + nombreAula);
     Swal.fire({
         title: '¿Seguro que quieres ' + (textoBoton === 'Desactivar' ? "desactivar" : "activar") + ' el aula "' + nombreAula + '"?',
         icon: 'question',
@@ -179,7 +175,6 @@ function loadExistDiaClase() {
     var reqAulas = new XMLHttpRequest();
     reqAulas.open('GET', MASTER_SERVER + '/api/VisorDiasClase');
     reqAulas.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
-    console.log('Token antes de peticion ' + GetCookie('TknBrJk'));
     reqAulas.send();
     var fila;
     var celda;
@@ -209,7 +204,6 @@ function loadExistDiaClase() {
 function controlDiaClase(params) {
     let currenElement = params;
     let textoBoton = currenElement.textContent;
-    console.log('Texto Boton: ' + textoBoton)
     let nombreDia = currenElement.parentElement.parentElement.querySelector('div').querySelector('div').querySelector('p').textContent.trim();
     Swal.fire({
         title: '¿Seguro que quieres ' + (textoBoton === 'Desactivar' ? "desactivar" : "activar") + ' el dia de clase "' + nombreDia + '"?',
@@ -277,7 +271,7 @@ function insertNewDiaClase() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     deleteTableGeneric(tblDias);
-                    loadExistClasses();
+                    loadExistDiaClase();
                     txtNuevoDiaClase.value = '';
                 }
             });
@@ -304,12 +298,11 @@ function loadExistGrado() {
     var fecha;
     reqAulas.onload = function () {
         json = JSON.parse(reqAulas.responseText);
-        deleteTable();
         json.forEach(element => {
             fecha = new Date(element.fechaInsercion);
             fila = tblGrado.insertRow();
             //Celda nombre aula
-            aulaEstatusTexto = 'Dia actualmente ' + (element.active ? 'Activo' : 'Inactivo')
+            aulaEstatusTexto = 'Grado actualmente ' + (element.active ? 'Activo' : 'Inactivo')
             celda = fila.insertCell(0);
             celda.innerHTML = '<div class="d-flex align-items-center"><img src="../IMG/claseIcono.jpg" alt=""style="width: 65px; height: 65px" class="rounded-circle" /><div class="ms-3"><p class="fw-bold mb-1">'
                 + element.nombre + '</p><p class="text-muted mb-0">' + aulaEstatusTexto + '</p> </div></div>';
@@ -318,7 +311,7 @@ function loadExistGrado() {
             celda.innerHTML = '<p class="fw-normal mb-1">' + fecha.toLocaleDateString('es-MX') + '</p>';
             //Celda Boton estatus
             celda = fila.insertCell(2);
-            celda.innerHTML = (element.active ? '<button type="button" class="btn btn-danger" onclick="controlDiaClase(this);">Desactivar</button>' : '<button type="button" class="btn btn-success" onclick="controlDiaClase(this);">Activar</button>');
+            celda.innerHTML = (element.active ? '<button type="button" class="btn btn-danger" onclick="controlGrado(this);">Desactivar</button>' : '<button type="button" class="btn btn-success" onclick="controlGrado(this);">Activar</button>');
 
         });
     }
@@ -327,18 +320,19 @@ function controlGrado(params) {
     let currenElement = params;
     let textoBoton = currenElement.textContent;
     console.log('Texto Boton: ' + textoBoton)
-    let nombreDia = currenElement.parentElement.parentElement.querySelector('div').querySelector('div').querySelector('p').textContent.trim();
+    let nombreGrado = currenElement.parentElement.parentElement.querySelector('div').querySelector('div').querySelector('p').textContent.trim();
+    console.log('Nombre grado'+nombreGrado)
     Swal.fire({
-        title: '¿Seguro que quieres ' + (textoBoton === 'Desactivar' ? "desactivar" : "activar") + ' el dia de clase "' + nombreDia + '"?',
+        title: '¿Seguro que quieres ' + (textoBoton === 'Desactivar' ? "desactivar" : "activar") + ' el dia de clase "' + nombreGrado + '"?',
         icon: 'question',
         showDenyButton: true,
         confirmButtonText: 'Sí',
     }).then((result) => {
         if (result.isConfirmed) {
             if(textoBoton === 'Desactivar'){
-                desactivarDiaClase(nombreDia);
+                desactivarGrado(nombreGrado);
             }else{
-                activarDiaClase(nombreDia);
+                activarGrado(nombreGrado);
             }
         } else if (result.isDenied) {
             Swal.fire('Movimiento cancelado', '', 'error')
@@ -349,53 +343,56 @@ function controlGrado(params) {
 function activarGrado(nombreGrado){
     var requestChange = new XMLHttpRequest();
     var data = new FormData();
-    requestChange.open('POST', MASTER_SERVER + '/api/ActivarDiaClase');
+    requestChange.open('POST', MASTER_SERVER + '/api/ActivarGrado');
     requestChange.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
-    data.append('DiaClase', nombreGrado);
+    data.append('NombreGrado', nombreGrado);
     requestChange.send(data);
     requestChange.onload = function () {
         var resp = JSON.parse(requestChange.responseText);
         console.log('Respuesta '+requestChange.responseText);
         Swal.fire((resp.rsp == 0) ? 'Proceso terminado' : 'Error', (resp.rsp == 0) ? 'Proceso completado correctamente' : 'El proceso ha fallado', (resp.rsp == 0) ? 'success' : 'error')
-        deleteTableGeneric(tblDias);
-        loadExistDiaClase();
+        deleteTableGeneric(tblGrado);
+        loadExistGrado();
     }
 }
-function desactivarGrado(nombreAula){
+function desactivarGrado(nombreGrado){
     var requestChange = new XMLHttpRequest();
     var data = new FormData();
-    requestChange.open('POST', MASTER_SERVER + '/api/DesactivarDiaClase');
+    requestChange.open('POST', MASTER_SERVER + '/api/DesactivarGrado');
+    
     requestChange.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
-    data.append('DiaClase', nombreAula);
+    data.append('NombreGrado', nombreGrado);
     requestChange.send(data);
     requestChange.onload = function () {
         var resp = JSON.parse(requestChange.responseText);
+        console.log(requestChange.responseText);
         Swal.fire((resp.rsp == 0) ? 'Proceso terminado' : 'Error', (resp.rsp == 0) ? 'Proceso completado correctamente' : 'El proceso ha fallado', (resp.rsp == 0) ? 'success' : 'error');
         deleteTableGeneric(tblGrado);
-        loadExistDiaClase();
+        loadExistGrado();
         
     }
 }
 function insertNewGrado() {
     var reqInsertAulas = new XMLHttpRequest();
     var form = new FormData();
-    reqInsertAulas.open('POST', MASTER_SERVER + '/api/InsertarDiaClase');
+    reqInsertAulas.open('POST', MASTER_SERVER + '/api/InsertarGrado');
     reqInsertAulas.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
-    form.append('DiaClase', txtNuevoDiaClase.value);
+    form.append('NombreGrado', txtNuevoGrado.value);
     reqInsertAulas.send(form);
     reqInsertAulas.onload = function () {
         var objRespuesta = JSON.parse(reqInsertAulas.responseText);
+        console.log(reqInsertAulas.responseText);
         if (objRespuesta.rsp == 0) {
             swal.fire({
-                title: 'Aula registrada correctamente',
+                title: 'Grado registrada correctamente',
                 text: objRespuesta.msg,
                 icon: 'success',
                 confirmButtonText: 'Ok'
             }).then((result) => {
                 if (result.isConfirmed) {
                     deleteTableGeneric(tblGrado);
-                    loadExistClasses();
-                    txtNuevoDiaClase.value = '';
+                    loadExistGrado();
+                    txtNuevoGrado.value = '';
                 }
             });
         } else {
