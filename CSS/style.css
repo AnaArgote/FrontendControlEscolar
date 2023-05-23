@@ -1,0 +1,71 @@
+* {
+    margin: 0px;
+    padding: 5px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    padding: 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.alumno {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.alumno h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.alumno .info {
+    margin-top: 10px;
+}
+
+.alumno .info p {
+    margin-bottom: 5px;
+}
+
+.alumno .info strong {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.horarios {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+.horarios th {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.horarios td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.horarios tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
