@@ -7,11 +7,15 @@ var templateLoadClases = document.getElementById('tmlOpenClass');
 var templateQrSpace = document.getElementById('tmlCodigoQr');
 var jsonTodayClases;
 var codeClass;
+var btnClose = document.getElementById('btnCloseClass');
 
 var qrcode = new QRCode("qrcode");
 var lbl = document.getElementById('lblConteo');
 
 
+btnClose.onclick = function(){
+  deleteClass();
+}
 function countListStudents(){
   var reque = new XMLHttpRequest();
   reque.open('GET','../php/temp/prdTemp.json');
@@ -125,21 +129,10 @@ function makeCode () {
   qrcode.makeCode(codeClass);
 }
 
-/*$("#text").
-  on("blur", function () {
-    makeCode();
-  }).
-  on("keydown", function (e) {
-    console.log(e.keyCode);
-    if (e.keyCode == 13) {
-      makeCode();
-    }
-  });*/
 
-
-var intervalId = window.setInterval(function(){
+/*var intervalId = window.setInterval(function(){
   countListStudents();
-}, 2000);
+}, 2000);*/
 function openQrView(){
   console.log('Open qr view');
   templateQrSpace.style.display = 'block';
@@ -162,15 +155,14 @@ function loadClasesFromJsonFile(){
 /*******************************Template QR Code Class*******************************/
 //Generic
 function mainMethod(){
-  /*DeleteCookie('ExistAuth');
-  DeleteCookie('tknAuth');
-  DeleteCookie('fileRefClassJson');*/
+
   infoClassesLoaded = GetCookie('fileRefClassJson');
   auth = GetCookie('ExistAuth');
-  if(infoClassesLoaded != null){
+  console.log(auth)
+  if(infoClassesLoaded != null && infoClassesLoaded != ''){
     openQrView();
   }else{
-    if(auth != null){
+    if(auth != null && auth != ''){
       loadTemplateOpenClass();
     }else{
       loadTemplateAuthenticateAdmin();
@@ -178,8 +170,12 @@ function mainMethod(){
     
   }
 }
+function deleteClass(){
+  DeleteCookie('ExistAuth');
+  DeleteCookie('tknAuth');
+  DeleteCookie('fileRefClassJson');
+  location.reload();
+}
 window.onload=function() {
-  var weekday = new Date().getDay();
-  console.log('Dia de la semana '+getActualDay())
   mainMethod();
 }
