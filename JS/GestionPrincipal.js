@@ -355,6 +355,7 @@ function activarGrado(nombreGrado){
         console.log('Respuesta '+requestChange.responseText);
         Swal.fire((resp.rsp == 0) ? 'Proceso terminado' : 'Error', (resp.rsp == 0) ? 'Proceso completado correctamente' : 'El proceso ha fallado', (resp.rsp == 0) ? 'success' : 'error')
         deleteTableGeneric(tblGrado);
+        sleepFor(5000);
         loadExistGrado();
     }
 }
@@ -371,6 +372,7 @@ function desactivarGrado(nombreGrado){
         console.log(requestChange.responseText);
         Swal.fire((resp.rsp == 0) ? 'Proceso terminado' : 'Error', (resp.rsp == 0) ? 'Proceso completado correctamente' : 'El proceso ha fallado', (resp.rsp == 0) ? 'success' : 'error');
         deleteTableGeneric(tblGrado);
+        sleepFor(5000);
         loadExistGrado();
         
     }
@@ -407,10 +409,14 @@ function insertNewGrado() {
         }
     }
 }
-/**Main Module**/
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+function sleepFor(sleepDuration){
+    var now = new Date().getTime();
+    while(new Date().getTime() < now + sleepDuration){ 
+        /* Do nothing */ 
+    }
 }
+/**Main Module**/
 window.onload = function () {
+    sleepFor(5000);
     loadExistDiaClase();
 }
