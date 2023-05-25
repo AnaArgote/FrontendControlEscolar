@@ -199,6 +199,7 @@ function loadExistDiaClase() {
             celda.innerHTML = (element.active ? '<button type="button" class="btn btn-danger" onclick="controlDiaClase(this);">Desactivar</button>' : '<button type="button" class="btn btn-success" onclick="controlDiaClase(this);">Activar</button>');
 
         });
+        loadExistGrado();
     }
 }
 function controlDiaClase(params) {
@@ -314,6 +315,8 @@ function loadExistGrado() {
             celda.innerHTML = (element.active ? '<button type="button" class="btn btn-danger" onclick="controlGrado(this);">Desactivar</button>' : '<button type="button" class="btn btn-success" onclick="controlGrado(this);">Activar</button>');
 
         });
+        
+    loadExistClasses();
     }
 }
 function controlGrado(params) {
@@ -405,8 +408,9 @@ function insertNewGrado() {
     }
 }
 /**Main Module**/
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 window.onload = function () {
     loadExistDiaClase();
-    loadExistGrado();
-    loadExistClasses();
 }
