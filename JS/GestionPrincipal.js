@@ -64,7 +64,7 @@ function deleteTableGeneric(tabla) {
 }
 function loadExistClasses() {
     var reqAulas = new XMLHttpRequest();
-    reqAulas.open('GET', MASTER_SERVER + '/api/VisorAulas');
+    reqAulas.open('GET', 'http://mrsergiotorres17-001-site1.itempurl.com/api/VisorAulas');
     reqAulas.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     reqAulas.send();
     var fila;
@@ -95,7 +95,7 @@ function loadExistClasses() {
 function insertNewAula() {
     var reqInsertAulas = new XMLHttpRequest();
     var form = new FormData();
-    reqInsertAulas.open('POST', MASTER_SERVER + '/api/aula');
+    reqInsertAulas.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/aula');
     reqInsertAulas.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     form.append('NombreAula', txtNuevaAula.value);
     reqInsertAulas.send(form);
@@ -147,7 +147,7 @@ function controlMateria(prms) {
 function desactivarAula(nombreAula) {
     var requestChange = new XMLHttpRequest();
     var data = new FormData();
-    requestChange.open('POST', MASTER_SERVER + '/api/DesactivarAula');
+    requestChange.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/DesactivarAula');
     requestChange.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     data.append('NombreAula', nombreAula);
     requestChange.send(data);
@@ -159,7 +159,7 @@ function desactivarAula(nombreAula) {
 function activarAula(nombreAula){
     var requestChange = new XMLHttpRequest();
     var data = new FormData();
-    requestChange.open('POST', MASTER_SERVER + '/api/ActivarAula');
+    requestChange.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/ActivarAula');
     requestChange.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     data.append('NombreAula', nombreAula);
     requestChange.send(data);
@@ -173,7 +173,7 @@ function activarAula(nombreAula){
 /*****************************************************************************/
 function loadExistDiaClase() {
     var reqAulas = new XMLHttpRequest();
-    reqAulas.open('GET', MASTER_SERVER + '/api/VisorDiasClase');
+    reqAulas.open('GET', 'http://mrsergiotorres17-001-site1.itempurl.com/api/VisorDiasClase');
     reqAulas.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     reqAulas.send();
     var fila;
@@ -226,7 +226,7 @@ function controlDiaClase(params) {
 function activarDiaClase(nombreAula){
     var requestChange = new XMLHttpRequest();
     var data = new FormData();
-    requestChange.open('POST', MASTER_SERVER + '/api/ActivarDiaClase');
+    requestChange.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/ActivarDiaClase');
     requestChange.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     data.append('DiaClase', nombreAula);
     requestChange.send(data);
@@ -241,7 +241,7 @@ function activarDiaClase(nombreAula){
 function desactivarDiaClase(nombreAula){
     var requestChange = new XMLHttpRequest();
     var data = new FormData();
-    requestChange.open('POST', MASTER_SERVER + '/api/DesactivarDiaClase');
+    requestChange.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/DesactivarDiaClase');
     requestChange.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     data.append('DiaClase', nombreAula);
     requestChange.send(data);
@@ -256,7 +256,7 @@ function desactivarDiaClase(nombreAula){
 function insertNewDiaClase() {
     var reqInsertAulas = new XMLHttpRequest();
     var form = new FormData();
-    reqInsertAulas.open('POST', MASTER_SERVER + '/api/InsertarDiaClase');
+    reqInsertAulas.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/InsertarDiaClase');
     reqInsertAulas.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     form.append('DiaClase', txtNuevoDiaClase.value);
     reqInsertAulas.send(form);
@@ -288,7 +288,7 @@ function insertNewDiaClase() {
 /********************************Gestion Dias de clase********************************/
 function loadExistGrado() {
     var reqAulas = new XMLHttpRequest();
-    reqAulas.open('GET', MASTER_SERVER + '/api/VisorDeGrados');
+    reqAulas.open('GET', 'http://mrsergiotorres17-001-site1.itempurl.com/api/VisorDeGrados');
     reqAulas.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     console.log('Token antes de peticion ' + GetCookie('TknBrJk'));
     reqAulas.send();
@@ -343,7 +343,7 @@ function controlGrado(params) {
 function activarGrado(nombreGrado){
     var requestChange = new XMLHttpRequest();
     var data = new FormData();
-    requestChange.open('POST', MASTER_SERVER + '/api/ActivarGrado');
+    requestChange.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/ActivarGrado');
     requestChange.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     data.append('NombreGrado', nombreGrado);
     requestChange.send(data);
@@ -358,7 +358,7 @@ function activarGrado(nombreGrado){
 function desactivarGrado(nombreGrado){
     var requestChange = new XMLHttpRequest();
     var data = new FormData();
-    requestChange.open('POST', MASTER_SERVER + '/api/DesactivarGrado');
+    requestChange.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/DesactivarGrado');
     
     requestChange.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     data.append('NombreGrado', nombreGrado);
@@ -375,7 +375,7 @@ function desactivarGrado(nombreGrado){
 function insertNewGrado() {
     var reqInsertAulas = new XMLHttpRequest();
     var form = new FormData();
-    reqInsertAulas.open('POST', MASTER_SERVER + '/api/InsertarGrado');
+    reqInsertAulas.open('POST', 'http://mrsergiotorres17-001-site1.itempurl.com/api/InsertarGrado');
     reqInsertAulas.setRequestHeader('Authorization', 'Bearer ' + GetCookie('TknBrJk'));
     form.append('NombreGrado', txtNuevoGrado.value);
     reqInsertAulas.send(form);
