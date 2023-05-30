@@ -18,40 +18,90 @@
 </head>
 
 <body>
-    <header>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-            <div class="container-fluid">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
 
-                <div class="imgTecIndex">
-                    <img src="../IMG/logo-instituto-tecnologico-de-leon.png" height="55" alt="ITL Logo"
-                        loading="lazy">
-                </div>
-
-
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img src="../IMG/Logo.png" height="35"
+                        alt="MDB Logo" loading="lazy"
+                          />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="listMenu">
+                    <!--li class="nav-item">
+                        <a class="nav-link" href="#">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Situación Académica</a>
+                        <a class="nav-link" href="#">Team</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inscripción</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Configuración</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Salir</a>
-                    </li>
+                        <a class="nav-link" href="#">Projects</a>
+                    </li-->
                 </ul>
-
+                <!-- Left links -->
             </div>
-        </nav>
-        <!-- Navbar -->
+            <!-- Collapsible wrapper -->
 
-    </header>
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+              
+
+                <!-- Notifications -->
+                <div class="dropdown">
+                    <a class="link-secondary me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                        role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge rounded-pill badge-notification bg-danger" id="numNotifications"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item" href="#">Some news</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Another news</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Avatar -->
+                <div class="dropdown">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img class="rounded-circle" height="25"
+                           loading="lazy" id="imgUser"/>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="#">My profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Settings</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" id="btnLogOut">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
 
     <br><br>
     <section class="alumno">
@@ -65,123 +115,43 @@
         </div>
     </section>
 
-    <section>
-        <h2>Horario</h2>
-        <table class="horarios">
-            <thead>
-                <tr>
-                    <th>Clave <br>Horario</th>
-                    <th>Cap.</th>
-                    <th>Clave <br>Materia</th>
-                    <th>Materia/Maestro</th>
-                    <th>Info.</th>
-                    <th>T.C.</th>
-                    <th>Lunes</th>
-                    <th>Martes</th>
-                    <th>Miercoles</th>
-                    <th>Jueves</th>
-                    <th>Viernes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>4176</td>
-                    <td>21 / 22</td>
-                    <td>AEB1055
-                        <br>ISX
-                    </td>
-                    <td>PROGRAMACIÓN WEB
-                        <br>ING. SUAREZ Y GOMEZ JOSE LUIS FERNANDO
-                    </td>
-                    <td>Cred = 5
-                        <br>Sem = 9
-                    </td>
-                    <td>CO</td>
-                    <td>08:45-10:25<br>C-D7</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4176</td>
-                    <td>21 / 22</td>
-                    <td>AEB1055
-                        <br>ISX
-                    </td>
-                    <td>PROGRAMACIÓN WEB
-                        <br>ING. SUAREZ Y GOMEZ JOSE LUIS FERNANDO
-                    </td>
-                    <td>Cred = 5
-                        <br>Sem = 9
-                    </td>
-                    <td>CO</td>
-                    <td></td>
-                    <td>08:45-10:25<br>C-D7</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4176</td>
-                    <td>21 / 22</td>
-                    <td>AEB1055
-                        <br>ISX
-                    </td>
-                    <td>PROGRAMACIÓN WEB
-                        <br>ING. SUAREZ Y GOMEZ JOSE LUIS FERNANDO
-                    </td>
-                    <td>Cred = 5
-                        <br>Sem = 9
-                    </td>
-                    <td>CO</td>
-                    <td></td>
-                    <td></td>
-                    <td>08:45-10:25<br>C-D7</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4176</td>
-                    <td>21 / 22</td>
-                    <td>AEB1055
-                        <br>ISX
-                    </td>
-                    <td>PROGRAMACIÓN WEB
-                        <br>ING. SUAREZ Y GOMEZ JOSE LUIS FERNANDO
-                    </td>
-                    <td>Cred = 5
-                        <br>Sem = 9
-                    </td>
-                    <td>CO</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>08:45-10:25<br>C-D7</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4176</td>
-                    <td>21 / 22</td>
-                    <td>AEB1055
-                        <br>ISX
-                    </td>
-                    <td>PROGRAMACIÓN WEB
-                        <br>ING. SUAREZ Y GOMEZ JOSE LUIS FERNANDO
-                    </td>
-                    <td>Cred = 5
-                        <br>Sem = 9
-                    </td>
-                    <td>CO</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>08:45-10:25<br>C-D7</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <!---Carrusel--->
+    <div class="carousel">
+        <div class="carousel__item  fade">
+            <div class="numbertext"></div>
+            <img src="../IMG/imagen1.jpg" style="width:100%">
+            <div class="text"></div>
+        </div>
+        <div class="carousel__item  fade">
+            <div class="numbertext"></div>
+            <img src="../IMG/imagen2.jpg" style="width: 100%;">
+            <div class="text"></div>
+        </div>
+        <div class="carousel__item  fade">
+            <div class="numbertext"></div>
+            <img src="../IMG/imagen3.jpg" style="width:100%">
+            <div class="text"></div>
+        </div>
+
+        <div class="carousel__item  fade">
+            <div class="numbertext"></div>
+            <img src="../IMG/imagen6.jpg" style="width:100%">
+            <div class="text"></div>
+        </div>
+        <div class="carousel__item  fade">
+            <div class="numbertext"></div>
+            <img src="../IMG/imagen7.jpg" style="width:100%">
+            <div class="text"></div>
+        </div>
+        <div style="text-align:center">
+            <span class="carousel__button"></span>
+            <span class="carousel__button"></span>
+            <span class="carousel__button"></span>
+            <span class="carousel__button"></span>
+            <span class="carousel__button"></span>
+        </div>
+    </div>
+    <!---Carrusel--->
 
     <footer class="text-center text-lg-start bg-light text-muted">
 
@@ -199,6 +169,11 @@
         </div>
         <!-- Copyright -->
     </footer>
+
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script src="../JS/Bienvenida.js"></script>
+    <script src="../JS/index2.js"></script>
 </body>
 
 </html>
