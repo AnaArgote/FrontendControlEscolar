@@ -31,7 +31,9 @@ function codigoFuncion() {
             hora = fila.insertCell(3);
             materia = fila.insertCell(4);
             profesor = fila.insertCell(5);
-            boton.innerHTML = '<button type="button" class="btn btn-danger">Baja</button>';
+            if (esFechaHabil === true) {
+                boton.innerHTML = '<button type="button" class="btn btn-success">Alta</button>';
+            }
             codigo.innerHTML = '<div class="d-flex align-items-center"><div class="ms-3"><p class="fw-bold mb-1">' + element.codigoClase + '</p></div></div>';
             dia.innerHTML = element.dia;
             hora.innerHTML = '<span class="badge badge-success rounded-pill d-inline">' + element.horario + '</span>';
