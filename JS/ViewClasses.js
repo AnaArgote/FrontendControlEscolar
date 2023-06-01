@@ -145,7 +145,7 @@ function loadClasesFromJsonFile(){
   requestJsonFile.send();
   requestJsonFile.onload = function(){
     jsonTodayClases = JSON.parse(requestJsonFile.responseText);
-    jsonTodayClases=  jsonTodayClases.filter(x=>x.Dia === 'Martes');
+    jsonTodayClases=  jsonTodayClases.filter(x=>x.Dia === 'Viernes');
     firstClass = jsonTodayClases[0];
     console.log(firstClass);
     codeClass = firstClass.IdClase;
@@ -177,5 +177,6 @@ function deleteClass(){
   location.reload();
 }
 window.onload=function() {
+  getActualDay()
   mainMethod();
 }
