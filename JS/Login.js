@@ -45,7 +45,7 @@ function codigoFuncion() {
                 confirmButtonText: 'Ok'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    location.href = 'index.html';
+                    location.href = 'Bienvenida.html';
                 }
             });
         }

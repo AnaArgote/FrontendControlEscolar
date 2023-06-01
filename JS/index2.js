@@ -20,7 +20,7 @@ function loadInfo(){
 document.getElementById('btnLogOut').addEventListener('click', function () {
   DeleteCookie('TknBrJk');
   DeleteCookie('userName');
-  location.href = 'index.html';
+  location.href = 'Bienvenida.html';
 });
 
 function crearMenu(jsonSections, listSection) {
